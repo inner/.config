@@ -1,0 +1,13 @@
+# Ignore lazy.nvim plugin directory                                                                                                                                                              
+lazy-lock.json                                                                                                                                                                                   
+                                                                                                                                                                                                   
+# Ignore logs                                                                                                                                                                                    
+*.log                                                                                                                                                                                            
+                                                                                                                                                                                                   
+# Ignore spell files                                                                                                                                                                             
+spell/                                                                                                                                                                                           
+                                                                                                                                                                                                   
+# Ignore swap files                                                                                                                                                                              
+*.swp                                                                                                                                                                                            
+*.swo                                                                                                                                                                                            
+*~
