@@ -12,6 +12,8 @@ map("i", "jk", "<ESC>")
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP references" })
 map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Find symbols in file" })
 map("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "Find symbols in project" })
+map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
+map("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
 
 map("n", "<leader>e", function()
   local nvimtree = require("nvim-tree.api")
