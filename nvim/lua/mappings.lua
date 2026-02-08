@@ -15,6 +15,9 @@ map("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "Fin
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
 map("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
 
+map({ "n", "i", "v" }, "<C-Up>", "<C-y>", { desc = "Scroll window up" })
+map({ "n", "i", "v" }, "<C-Down>", "<C-e>", { desc = "Scroll window down" })
+
 map("n", "<leader>e", function()
   local nvimtree = require("nvim-tree.api")
   local current_buf = vim.api.nvim_get_current_buf()
