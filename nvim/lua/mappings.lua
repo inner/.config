@@ -17,6 +17,10 @@ map("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
 
 map({ "n", "i", "v" }, "<C-Up>", "<C-y>", { desc = "Scroll window up" })
 map({ "n", "i", "v" }, "<C-Down>", "<C-e>", { desc = "Scroll window down" })
+map("n", "<C-S-Up>", "<C-u>", { desc = "Half page up" })
+map("n", "<C-S-Down>", "<C-d>", { desc = "Half page down" })
+map({ "n", "i", "v", "c" }, "<C-Left>", "<C-S-Left>", { desc = "Word left" })
+map({ "n", "i", "v", "c" }, "<C-Right>", "<C-S-Right>", { desc = "Word right" })
 
 map("n", "<leader>e", function()
   local nvimtree = require("nvim-tree.api")
