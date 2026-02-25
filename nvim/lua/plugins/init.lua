@@ -1,5 +1,14 @@
 return {
   {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      view = {
+        adaptive_size = true,
+      },
+    },
+  },
+
+  {
     "stevearc/conform.nvim",
     event = "BufReadPre",
     opts = require "configs.conform",
