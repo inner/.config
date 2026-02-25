@@ -21,6 +21,18 @@ return {
     },
   },
 
+  {
+    "m4xshen/smartcolumn.nvim",
+    event = "BufReadPre",
+    opts = {
+      colorcolumn = "80",
+      disabled_filetypes = { "help", "text", "markdown", "NvimTree", "lazy", "mason" },
+      custom_colorcolumn = {
+        rust = "100",
+      },
+    },
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
