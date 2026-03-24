@@ -38,6 +38,8 @@ return {
       disabled_filetypes = { "help", "text", "markdown", "NvimTree", "lazy", "mason" },
       custom_colorcolumn = {
         rust = "100",
+        go = "100",
+        python = "100",
       },
     },
   },

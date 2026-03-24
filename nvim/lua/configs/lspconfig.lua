@@ -26,7 +26,19 @@ vim.lsp.config("rust_analyzer", {
   },
 })
 
-local servers = { "rust_analyzer", "clangd" }
+vim.lsp.config("gopls", {
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+})
+
+local servers = { "rust_analyzer", "clangd", "gopls", "pyright" }
 vim.lsp.enable(servers)
 
 -- read :h vim.lsp.config for changing options of lsp servers 
