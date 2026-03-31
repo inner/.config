@@ -1,0 +1,30 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/gruvbox_material_hard_dark.toml"
+]
+
+[font]
+normal = { family = "FiraCode Nerd Font" }
+size = 12.0
+
+[font.offset]
+y = 0
+
+[window]
+dynamic_padding = false
+title = ":: netrunner ::"
+dynamic_title = false
+
+[window.dimensions]
+columns = 160
+lines = 55
+
+[[keyboard.bindings]]
+key = "F11"
+action = "ToggleFullscreen"
+
+[terminal.shell]
+program = "/usr/bin/fish"
+
+[debug]
+log_level = "Error"
