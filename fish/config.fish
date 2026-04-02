@@ -1,7 +1,9 @@
 fish_add_path ~/.local/bin
+set -g fish_greeting
 
 if status is-interactive
-    abbr dps 'docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Created}}\t{{.Ports}}\t{{.Names}}"'
+    abbr dpsa 'docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Created}}\t{{.Ports}}\t{{.Names}}"'
+    abbr dps 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Created}}\t{{.Ports}}\t{{.Names}}"'
     abbr push 'git add . && git commit -m "+upd" && git push'
 
     alias vim "nvim"
