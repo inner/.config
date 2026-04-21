@@ -1,11 +1,26 @@
 fish_add_path ~/.local/bin
 set -g fish_greeting
 
-if status is-interactive
-    abbr dpsa 'docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Created}}\t{{.Ports}}\t{{.Names}}"'
-    abbr dps 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Created}}\t{{.Ports}}\t{{.Names}}"'
-    abbr push 'git add . && git commit -m "+upd" && git push'
+# Keep the `push` abbreviation ergonomic while allowing an optional
+# commit message. Without arguments it preserves the current `+upd`
+# commit message.
+function __abbr_git_push
+    set -l message "+upd"
 
+    if test (count $argv) -gt 0
+        set message (string join ' ' -- $argv)
+    end
+
+    git add .
+    and git commit -m "$message"
+    and git push
+end
+
+if status is-interactive
+    abbr dpsa 'docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
+    abbr dps 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
+    abbr push '__abbr_git_push'
+    abbr ai 'ollama run gemma4:latest --verbose'
     alias vim "nvim"
     alias plz "sudo"
     alias u "sudo dnf update"
@@ -18,8 +33,7 @@ if status is-interactive
     alias repos "sudo dnf repolist --all"
     alias wget "wget2"
     alias ls "ls -lahS --color=auto --group-directories-first"
-    alias docker "podman"
     alias o "xdg-open"
-    alias c "claude"
+    alias c "codex"
     alias g "cd ~/github"
 end
