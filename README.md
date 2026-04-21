@@ -1,43 +1,82 @@
 # .config
 
-Personal dotfiles for a Linux development environment — version-controlled and deployable across machines.
+Personal Linux dotfiles for a development-oriented workstation.
 
-## Contents
+This repository tracks the configs I actually use for shell, editor,
+terminal, and tmux so they can be cloned onto a new machine without
+rebuilding everything from scratch.
 
-### Shell — [fish/](fish/)
-- Custom prompt, aliases, and abbreviations for daily workflows
-- Package management shortcuts (`i`, `u`, `r`) targeting `dnf` (Fedora/RHEL)
-- Quick aliases: `vim` → `nvim`, `docker` → `podman`, `c` → `claude`, `g` → `cd ~/github`
-- [Fisher](https://github.com/jorgebucaran/fisher) plugin manager with Gruvbox theme
+## Layout
 
-### Editor — [nvim/](nvim/)
-- [NvChad](https://nvchad.com/) v2.5 as the base framework, theme: gruvchad (Gruvbox)
-- LSP configured for Rust, Go, Python, C/C++
-- Code formatting via [conform.nvim](https://github.com/stevearc/conform.nvim)
-- File tree ([nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)), smart column ruler (80/100 chars)
-- See [nvim/README.md](nvim/README.md) for keybindings and full details
+### [fish/](fish/)
 
-### Terminal — [alacritty/](alacritty/)
-- Font: FiraCode Nerd Font, size 12
-- Shell: Fish, window title: `:: netrunner ::`
-- Theme: Gruvbox Material Hard Dark (17 themes available in `themes/`)
+Fish is the interactive shell baseline for this setup.
 
-### Multiplexer — [tmux/](tmux/)
-- Prefix: `` ` `` (backtick)
+- Adds `~/.local/bin` to `PATH`
+- Disables the default Fish greeting
+- Defines Fedora/RHEL-oriented `dnf` shortcuts such as `i`, `iy`, `u`,
+  `uy`, `r`, and `ry`
+- Adds workflow aliases such as `vim` -> `nvim`, `c` -> `codex`, `g` ->
+  `cd ~/github`, and `o` -> `xdg-open`
+- Provides a `push` abbreviation that stages changes, commits with a
+  default `+upd` message, and pushes
+- Includes Fisher files and prompt/theme helpers
+
+### [nvim/](nvim/)
+
+Neovim is built on top of [NvChad](https://nvchad.com/) `v2.5` and
+bootstraps [lazy.nvim](https://github.com/folke/lazy.nvim) on first
+launch.
+
+- Custom options, mappings, and autocmds
+- LSP setup for `rust_analyzer`, `clangd`, `gopls`, and `pyright`
+- Formatting through
+  [conform.nvim](https://github.com/stevearc/conform.nvim)
+- File tree via
+  [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua)
+- Smart color columns at `80`, with `100` for Rust, Go, and Python
+
+See [nvim/README.md](nvim/README.md) for editor-specific notes.
+
+### [alacritty/](alacritty/)
+
+Alacritty uses Fish as the shell and keeps a large local theme library.
+
+- Default imported theme: `themes/linux.toml`
+- Font: `FiraCode Nerd Font Mono`
+- Font size: `12`
+- Window title: `:: netrunner ::`
+- Default window size: `160x55`
+- `F11` toggles fullscreen
+
+### [tmux/](tmux/)
+
+Tmux is configured to stay minimal and keyboard-focused.
+
 - Default shell: Fish
+- Prefix key: `` ` ``
+- Mouse support enabled
+- Vi-style copy and selection keys enabled
+
+### [fonts/](fonts/)
+
+Bundled fonts used by the terminal and editor setup.
+
+- FiraCode Nerd Font
+- Iosevka
+- JetBrains Mono
+- Noto Sans Mono
 
 ## Setup
 
-Clone into `~/.config`:
+Clone the repository into `~/.config`:
 
 ```sh
 git clone https://github.com/inner/.config ~/.config
 ```
 
-Neovim plugins will be installed automatically on first launch via lazy.nvim.
+## Post-Clone Notes
 
-For Fish plugins, install Fisher and run:
-
-```sh
-fisher update
-```
+- Start `nvim` once to let `lazy.nvim` install plugins
+- Install Fisher if you want to manage Fish plugins with `fisher update`
+- Ensure a Nerd Font is installed and selected in your terminal
