@@ -11,4 +11,4 @@ spell/
 *.swp                                                                                                                                                                                            
 *.swo                                                                                                                                                                                            
 *~
-# .codex
+.codex
