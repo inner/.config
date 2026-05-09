@@ -1,0 +1,61 @@
+#!/bin/sh
+
+path=$1
+home=${HOME:-}
+
+[ -n "$path" ] || exit 0
+
+case "$path" in
+  "$home")
+    printf '~'
+    exit 0
+    ;;
+  "$home"/*)
+    path="~/${path#"$home"/}"
+    ;;
+esac
+
+case "$path" in
+  */*) ;;
+  *)
+    printf '%s' "$path"
+    exit 0
+    ;;
+esac
+
+old_ifs=$IFS
+IFS=/
+set -- $path
+IFS=$old_ifs
+
+prefix=
+result=
+count=$#
+index=1
+
+for part do
+  [ -n "$part" ] || {
+    prefix=/
+    index=$((index + 1))
+    continue
+  }
+
+  if [ "$index" -eq "$count" ] || [ "$part" = "~" ]; then
+    segment=$part
+  else
+    case "$part" in
+      .?*) segment=$(printf '%.2s' "$part") ;;
+      *) segment=$(printf '%.1s' "$part") ;;
+    esac
+  fi
+
+  if [ -n "$result" ]; then
+    result=$result/$segment
+  else
+    result=$prefix$segment
+  fi
+
+  index=$((index + 1))
+done
+
+printf '%s' "$result"

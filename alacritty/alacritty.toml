@@ -25,7 +25,8 @@ key = "F11"
 action = "ToggleFullscreen"
 
 [terminal.shell]
-program = "/usr/bin/fish"
+program = "/usr/bin/tmux"
+args = ["new-session", "-A", "-s", "main"]
 
 [debug]
 log_level = "Error"
