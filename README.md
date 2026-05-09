@@ -69,11 +69,23 @@ Bundled fonts used by the terminal and editor setup.
 
 ## Setup
 
-Clone the repository into `~/.config`:
+This repository is intended to live at `~/github/.config`, with selected
+directories linked into the real `~/.config` directory. The files stay
+source-controlled in the repository, while applications continue to read
+their usual config paths.
+
+The current setup uses manual symlinks rather than Stow:
 
 ```sh
-git clone https://github.com/inner/.config ~/.config
+ln -s ~/github/.config/alacritty ~/.config/alacritty
+ln -s ~/github/.config/fish ~/.config/fish
+ln -s ~/github/.config/nvim ~/.config/nvim
+ln -s ~/github/.config/tmux ~/.config/tmux
 ```
+
+Before creating a link, move aside any existing real directory at the
+target path, such as `~/.config/nvim`, so the symlink can take its
+place.
 
 ## Post-Clone Notes
 
