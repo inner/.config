@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/linux.toml"
+    "~/.config/alacritty/themes/gruvbox_dark.toml"
 ]
 
 [font]
