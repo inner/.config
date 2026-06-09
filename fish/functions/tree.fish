@@ -1,5 +1,6 @@
 function tree --description 'Show a tree with a default depth of 2'
     set -l depth 2
+    set -l ignored_paths '.git|.hg|.svn|.DS_Store|.cache'
     set -l tree_args
 
     if test (count $argv) -gt 0
@@ -15,5 +16,5 @@ function tree --description 'Show a tree with a default depth of 2'
         set tree_args .
     end
 
-    command tree -L $depth $tree_args
+    command tree -a -I $ignored_paths -L $depth $tree_args
 end
