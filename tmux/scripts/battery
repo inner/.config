@@ -1,0 +1,34 @@
+#!/bin/sh
+
+battery_dir=
+
+for dir in /sys/class/power_supply/BAT*; do
+  [ -d "$dir" ] || continue
+  battery_dir=$dir
+  break
+done
+
+[ -n "$battery_dir" ] || exit 0
+[ -r "$battery_dir/capacity" ] || exit 0
+
+capacity=$(cat "$battery_dir/capacity" 2>/dev/null)
+status=$(cat "$battery_dir/status" 2>/dev/null)
+
+case "$status" in
+  Charging)
+    marker=+
+    ;;
+  Full)
+    marker==
+    ;;
+  Discharging)
+    marker=-
+    ;;
+  *)
+    marker=
+    ;;
+esac
+
+[ -n "$capacity" ] || exit 0
+
+printf '🔋 %s%%%s' "$capacity" "$marker"
