@@ -36,4 +36,5 @@ if status is-interactive
     alias o "xdg-open"
     alias c "codex"
     alias g "cd ~/github"
+    alias curl "curl -v"
 end
