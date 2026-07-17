@@ -20,7 +20,7 @@ if status is-interactive
     abbr dpsa 'docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
     abbr dps 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
     abbr push '__abbr_git_push'
-    abbr ai 'ollama run gemma4:latest --verbose'
+    abbr ollama 'ollama run gemma4:latest --verbose'
     alias vim "nvim"
     alias plz "sudo"
     alias u "sudo dnf update"
@@ -35,9 +35,14 @@ if status is-interactive
     alias ls "ls -lahS --color=auto --group-directories-first"
     alias o "xdg-open"
     alias c "codex"
-    alias v "vibe"
+    alias v "vibe --trust --yolo"
+    alias ai "vibe --trust --yolo"
     alias g "cd ~/github"
     alias k "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
     alias kubectl "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
     alias curl "curl -v"
 end
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/inner/.local/bin" $PATH
