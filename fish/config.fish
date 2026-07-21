@@ -21,6 +21,9 @@ if status is-interactive
     abbr dps 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
     abbr push '__abbr_git_push'
     abbr ollama 'ollama run gemma4:latest --verbose'
+
+    alias chmod "chmod -v"
+    alias chown "chown -v"
     alias vim "nvim"
     alias plz "sudo"
     alias u "sudo dnf update"
