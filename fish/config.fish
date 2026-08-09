@@ -20,7 +20,6 @@ if status is-interactive
     abbr dpsa 'docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
     abbr dps 'docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Ports}}\t{{.Names}}"'
     abbr push '__abbr_git_push'
-    abbr ollama 'ollama run gemma4:latest --verbose'
 
     alias chmod "chmod -v"
     alias chown "chown -v"
@@ -38,16 +37,10 @@ if status is-interactive
     alias ls "ls -lahS --color=auto --group-directories-first"
     alias o "xdg-open"
     alias c "codex"
-    alias ai "codex"
+    alias ai "ollama launch opencode --model qwen3-coder-opencode"
     alias g "cd ~/github"
     alias k "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
     alias kubectl "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
     alias curl "curl -v"
 end
 
-
-# Added by Antigravity CLI installer
-set -gx PATH "/home/inner/.local/bin" $PATH
-
-# opencode
-fish_add_path /home/inner/.opencode/bin
