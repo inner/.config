@@ -108,22 +108,25 @@ press `Space`, then `f`, then `f`.
 
 ### LSP and Code
 
+These keys require an active language server for the current file. Use
+`:LspInfo` if an LSP key does nothing.
+
 | Keys | Mode | Action |
 | --- | --- | --- |
 | `K` | Normal | Show hover documentation |
-| `gd` | Normal | Go to definition |
-| `gD` | Normal | Go to declaration |
 | `gr` | Normal | Find references |
-| `<leader>D` | Normal | Go to type definition |
-| `<leader>ra` | Normal | Rename symbol |
 | `<leader>ca` | Normal | Show code actions |
 | `<leader>fs` | Normal | Find symbols in the current file |
 | `<leader>fS` | Normal | Find symbols in the project |
 | `<leader>fm` | Normal, Visual | Format file or selection |
-| `<leader>ds` | Normal | Show diagnostics in the location list |
-| `<leader>wa` | Normal | Add workspace folder |
-| `<leader>wr` | Normal | Remove workspace folder |
-| `<leader>wl` | Normal | List workspace folders |
+| `grn` | Normal | Rename symbol |
+| `gra` | Normal, Visual | Show code actions |
+| `grr` | Normal | Find references |
+| `gri` | Normal | Go to implementation |
+| `grt` | Normal | Go to type definition |
+| `gO` | Normal | Show document symbols |
+| `[d` / `]d` | Normal | Go to previous / next diagnostic |
+| `[D` / `]D` | Normal | Go to first / last diagnostic |
 
 ### Editing and Movement
 
