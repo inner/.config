@@ -84,88 +84,100 @@ npm install -g lua-language-server
 └── .stylua.toml               # Lua formatter config
 ```
 
-## Neovim Command Cheat Page
+## Neovim Key Cheat Sheet
 
-The leader key is the **Spacebar**. In command examples, `<leader>e`
-means press `Space`, then `e`.
+The leader key is the **Spacebar**. For example, `<leader>ff` means
+press `Space`, then `f`, then `f`.
 
-### Daily Navigation
+### Files, Search, and Explorer
+
+| Keys | Mode | Action |
+| --- | --- | --- |
+| `<leader>ff` | Normal | Find files |
+| `<leader>fa` | Normal | Find all files, including hidden and ignored files |
+| `<leader>fw` | Normal | Search text across the project |
+| `<leader>fz` | Normal | Search text in the current buffer |
+| `<leader>fb` | Normal | Switch open buffers |
+| `<leader>fo` | Normal | Find recently opened files |
+| `<leader>fh` | Normal | Search Neovim help pages |
+| `<leader>ma` | Normal | Find marks |
+| `<leader>cm` | Normal | Browse Git commits |
+| `<leader>gt` | Normal | Browse Git status |
+| `<C-n>` | Normal | Toggle the file tree |
+| `<leader>e` | Normal | Focus the file tree, or return to the previous window if the tree is focused |
+
+### LSP and Code
+
+| Keys | Mode | Action |
+| --- | --- | --- |
+| `K` | Normal | Show hover documentation |
+| `gd` | Normal | Go to definition |
+| `gD` | Normal | Go to declaration |
+| `gr` | Normal | Find references |
+| `<leader>D` | Normal | Go to type definition |
+| `<leader>ra` | Normal | Rename symbol |
+| `<leader>ca` | Normal | Show code actions |
+| `<leader>fs` | Normal | Find symbols in the current file |
+| `<leader>fS` | Normal | Find symbols in the project |
+| `<leader>fm` | Normal, Visual | Format file or selection |
+| `<leader>ds` | Normal | Show diagnostics in the location list |
+| `<leader>wa` | Normal | Add workspace folder |
+| `<leader>wr` | Normal | Remove workspace folder |
+| `<leader>wl` | Normal | List workspace folders |
+
+### Editing and Movement
 
 | Keys | Mode | Action |
 | --- | --- | --- |
 | `jk` | Insert | Leave insert mode |
 | `;` | Normal | Enter command mode, same as `:` |
-| `<leader>e` | Normal | Focus the file tree, or return to the previous window if the tree is focused |
+| `<Esc>` | Normal | Clear search highlights |
+| `<C-s>` | Normal | Save file |
+| `<C-c>` | Normal | Copy the whole file |
+| `<leader>/` | Normal, Visual | Toggle comment |
+| `<leader>n` | Normal | Toggle line numbers |
+| `<leader>rn` | Normal | Toggle relative line numbers |
 | `<C-Up>` | Normal, Insert, Visual | Scroll the window up |
 | `<C-Down>` | Normal, Insert, Visual | Scroll the window down |
 | `<C-S-Up>` | Normal | Move half a page up |
 | `<C-S-Down>` | Normal | Move half a page down |
 | `<C-Left>` | Normal, Insert, Visual, Command | Move one word left |
 | `<C-Right>` | Normal, Insert, Visual, Command | Move one word right |
+| `<C-b>` | Insert | Move to the beginning of the line |
+| `<C-e>` | Insert | Move to the end of the line |
+| `<C-h>` | Insert | Move left |
+| `<C-l>` | Insert | Move right |
+| `<C-j>` | Insert | Move down |
+| `<C-k>` | Insert | Move up |
 
-### Search and Files
+### Buffers, Windows, and Terminals
 
-| Command | Action |
-| --- | --- |
-| `:Telescope find_files` | Find files |
-| `:Telescope live_grep` | Search text across the project |
-| `:Telescope buffers` | Switch open buffers |
-| `:Telescope help_tags` | Search Neovim help |
-| `:NvimTreeToggle` | Toggle the file tree |
-| `:NvimTreeFindFile` | Reveal the current file in the tree |
+| Keys | Mode | Action |
+| --- | --- | --- |
+| `<Tab>` | Normal | Go to the next buffer |
+| `<S-Tab>` | Normal | Go to the previous buffer |
+| `<leader>b` | Normal | Open a new buffer |
+| `<leader>x` | Normal | Close the current buffer |
+| `<C-h>` | Normal | Move to the window on the left |
+| `<C-j>` | Normal | Move to the window below |
+| `<C-k>` | Normal | Move to the window above |
+| `<C-l>` | Normal | Move to the window on the right |
+| `<leader>h` | Normal | Open a new horizontal terminal |
+| `<leader>v` | Normal | Open a new vertical terminal |
+| `<A-h>` | Normal, Terminal | Toggle horizontal terminal |
+| `<A-v>` | Normal, Terminal | Toggle vertical terminal |
+| `<A-i>` | Normal, Terminal | Toggle floating terminal |
+| `<C-x>` | Terminal | Leave terminal mode |
 
-### LSP and Code
+### Help and Discovery
 
-| Keys or Command | Action |
-| --- | --- |
-| `K` | Show hover documentation |
-| `gr` | Find references |
-| `<leader>fs` | Find symbols in the current file |
-| `<leader>fS` | Find symbols in the project |
-| `<leader>ca` | Show code actions |
-| `:LspInfo` | Show active language servers |
-| `:Mason` | Manage language servers and tools |
-| `:lua vim.lsp.buf.rename()` | Rename the symbol under the cursor |
-
-### Editing Essentials
-
-| Keys or Command | Action |
-| --- | --- |
-| `i` / `a` | Insert before / after the cursor |
-| `o` / `O` | Open a new line below / above |
-| `v` / `V` | Start character / line visual selection |
-| `y` / `yy` | Yank selection / current line |
-| `p` / `P` | Paste after / before the cursor |
-| `d` / `dd` | Delete selection / current line |
-| `u` | Undo |
-| `<C-r>` | Redo |
-| `.` | Repeat the previous change |
-| `:%s/old/new/g` | Replace `old` with `new` in the whole file |
-
-### Buffers, Windows, and Tabs
-
-| Command | Action |
-| --- | --- |
-| `:w` | Save the current file |
-| `:q` | Quit the current window |
-| `:qa` | Quit Neovim |
-| `:bd` | Delete the current buffer |
-| `:split` | Open a horizontal split |
-| `:vsplit` | Open a vertical split |
-| `<C-w>h/j/k/l` | Move between windows |
-| `<C-w>=` | Balance split sizes |
-| `:tabnew` | Open a new tab |
-| `gt` / `gT` | Go to next / previous tab |
-
-### Plugins and Maintenance
-
-| Command | Action |
-| --- | --- |
-| `:Lazy` | Open the plugin manager |
-| `:Lazy sync` | Install, update, and clean plugins |
-| `:Lazy restore` | Restore plugins from `lazy-lock.json` |
-| `:checkhealth` | Run Neovim health checks |
-| `:ConformInfo` | Show formatter status |
+| Keys | Mode | Action |
+| --- | --- | --- |
+| `<leader>ch` | Normal | Open the NvChad cheat sheet |
+| `<leader>wK` | Normal | Show all keymaps in WhichKey |
+| `<leader>wk` | Normal | Search keymaps in WhichKey |
+| `<leader>th` | Normal | Open the NvChad theme picker |
+| `<leader>pt` | Normal | Pick a hidden terminal |
 
 ## Updating
 
