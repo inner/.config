@@ -84,6 +84,89 @@ npm install -g lua-language-server
 └── .stylua.toml               # Lua formatter config
 ```
 
+## Neovim Command Cheat Page
+
+The leader key is the **Spacebar**. In command examples, `<leader>e`
+means press `Space`, then `e`.
+
+### Daily Navigation
+
+| Keys | Mode | Action |
+| --- | --- | --- |
+| `jk` | Insert | Leave insert mode |
+| `;` | Normal | Enter command mode, same as `:` |
+| `<leader>e` | Normal | Focus the file tree, or return to the previous window if the tree is focused |
+| `<C-Up>` | Normal, Insert, Visual | Scroll the window up |
+| `<C-Down>` | Normal, Insert, Visual | Scroll the window down |
+| `<C-S-Up>` | Normal | Move half a page up |
+| `<C-S-Down>` | Normal | Move half a page down |
+| `<C-Left>` | Normal, Insert, Visual, Command | Move one word left |
+| `<C-Right>` | Normal, Insert, Visual, Command | Move one word right |
+
+### Search and Files
+
+| Command | Action |
+| --- | --- |
+| `:Telescope find_files` | Find files |
+| `:Telescope live_grep` | Search text across the project |
+| `:Telescope buffers` | Switch open buffers |
+| `:Telescope help_tags` | Search Neovim help |
+| `:NvimTreeToggle` | Toggle the file tree |
+| `:NvimTreeFindFile` | Reveal the current file in the tree |
+
+### LSP and Code
+
+| Keys or Command | Action |
+| --- | --- |
+| `K` | Show hover documentation |
+| `gr` | Find references |
+| `<leader>fs` | Find symbols in the current file |
+| `<leader>fS` | Find symbols in the project |
+| `<leader>ca` | Show code actions |
+| `:LspInfo` | Show active language servers |
+| `:Mason` | Manage language servers and tools |
+| `:lua vim.lsp.buf.rename()` | Rename the symbol under the cursor |
+
+### Editing Essentials
+
+| Keys or Command | Action |
+| --- | --- |
+| `i` / `a` | Insert before / after the cursor |
+| `o` / `O` | Open a new line below / above |
+| `v` / `V` | Start character / line visual selection |
+| `y` / `yy` | Yank selection / current line |
+| `p` / `P` | Paste after / before the cursor |
+| `d` / `dd` | Delete selection / current line |
+| `u` | Undo |
+| `<C-r>` | Redo |
+| `.` | Repeat the previous change |
+| `:%s/old/new/g` | Replace `old` with `new` in the whole file |
+
+### Buffers, Windows, and Tabs
+
+| Command | Action |
+| --- | --- |
+| `:w` | Save the current file |
+| `:q` | Quit the current window |
+| `:qa` | Quit Neovim |
+| `:bd` | Delete the current buffer |
+| `:split` | Open a horizontal split |
+| `:vsplit` | Open a vertical split |
+| `<C-w>h/j/k/l` | Move between windows |
+| `<C-w>=` | Balance split sizes |
+| `:tabnew` | Open a new tab |
+| `gt` / `gT` | Go to next / previous tab |
+
+### Plugins and Maintenance
+
+| Command | Action |
+| --- | --- |
+| `:Lazy` | Open the plugin manager |
+| `:Lazy sync` | Install, update, and clean plugins |
+| `:Lazy restore` | Restore plugins from `lazy-lock.json` |
+| `:checkhealth` | Run Neovim health checks |
+| `:ConformInfo` | Show formatter status |
+
 ## Updating
 
 ### Update Configuration
