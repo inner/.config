@@ -146,6 +146,8 @@ These keys require an active language server for the current file. Use
 | `<C-S-Down>` | Normal | Move half a page down |
 | `<C-Left>` | Normal, Insert, Visual, Command | Move one word left |
 | `<C-Right>` | Normal, Insert, Visual, Command | Move one word right |
+| `<Down>` | Insert, Select | Select the next IntelliSense item when the completion menu is open; otherwise move down |
+| `<Up>` | Insert, Select | Select the previous IntelliSense item when the completion menu is open; otherwise move up |
 | `<C-b>` | Insert | Move to the beginning of the line |
 | `<C-e>` | Insert | Move to the end of the line |
 | `<C-h>` | Insert | Move left |
