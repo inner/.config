@@ -1,10 +1,11 @@
 # .config
 
-Personal Linux dotfiles for a development-oriented workstation.
+Personal dotfiles for my Fedora Linux development workstation.
 
 This repository tracks the configs I actually use for shell, editor,
 terminal, and tmux so they can be cloned onto a new machine without
-rebuilding everything from scratch.
+rebuilding everything from scratch. The configuration and bootstrap script
+target Fedora; other Linux distributions are not currently supported.
 
 ## Layout
 
