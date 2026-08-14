@@ -69,18 +69,46 @@ Bundled fonts used by the terminal and editor setup.
 
 ## Setup
 
-This repository is intended to live at `~/github/.config`, with selected
-directories linked into the real `~/.config` directory. The files stay
-source-controlled in the repository, while applications continue to read
-their usual config paths.
+Clone the repository, then run the Fedora bootstrap script:
 
-The current setup uses manual symlinks rather than Stow:
+```sh
+git clone https://github.com/inner/.config.git ~/github/.config
+cd ~/github/.config
+./bootstrap-fedora.sh
+```
+
+The script is verbose and safe to rerun. It:
+
+- installs Alacritty, Fish, Git/GitHub CLI, Neovim, tmux, development tools,
+  language servers, formatters, and clipboard/search dependencies with `dnf`,
+  npm, and Cargo;
+- installs the `rust-analyzer` and `rustfmt` components when Rust is managed by
+  rustup (the proxy binaries alone are not sufficient);
+- configures Fish to include `~/.cargo/bin`, allowing terminal-launched Neovim
+  to find rustup components and Cargo-installed formatters such as Stylua;
+- copies the bundled fonts into `/usr/share/fonts` and refreshes the font cache;
+- links the Alacritty, Fish, Neovim, and tmux directories into `~/.config`;
+- links `git/.gitconfig` to `~/.gitconfig`, including the Git author identity;
+- moves an existing destination to a timestamped backup before replacing it.
+
+The script asks for `sudo` because system packages and fonts require
+administrator access. It derives the repository path from its own location,
+so the checkout may live somewhere other than `~/github/.config`.
+
+### Manual linking
+
+If software is already installed and only the links are needed, create them
+manually. The files stay source-controlled in the repository while applications
+continue to read their usual configuration paths.
+
+This setup uses symlinks rather than Stow:
 
 ```sh
 ln -s ~/github/.config/alacritty ~/.config/alacritty
 ln -s ~/github/.config/fish ~/.config/fish
 ln -s ~/github/.config/nvim ~/.config/nvim
 ln -s ~/github/.config/tmux ~/.config/tmux
+ln -s ~/github/.config/git/.gitconfig ~/.gitconfig
 ```
 
 Before creating a link, move aside any existing real directory at the
