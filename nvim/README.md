@@ -30,16 +30,61 @@ Before installing this configuration, ensure you have the following installed:
 - **Node.js** and **npm** - for LSP servers and TreeSitter
 - **xclip** or **wl-clipboard** - for system clipboard support (Linux)
 
+### Fedora Workstation
+
+On Fedora, install the recommended command-line tools, the language servers
+enabled by this configuration, and its C/C++ and Python formatters with:
+
+```bash
+sudo dnf install -y fd-find golang gopls clang-tools-extra python3-ruff \
+  cargo rust rust-analyzer rustfmt
+```
+
+This provides `fd`, `go`, `gopls`, `clangd`, `clang-format`, `ruff`, Cargo,
+`rustc`, `rust-analyzer`, and `rustfmt`. Git, ripgrep, Node.js/npm, and
+`wl-clipboard` are also recommended; install any that are missing with:
+
+```bash
+sudo dnf install -y git ripgrep nodejs npm wl-clipboard
+```
+
 ### Language-Specific Tools
 
 Install language servers for the languages you work with:
 
 ```bash
-# Example: Install common language servers
-npm install -g typescript-language-server
+# Python (enabled by this configuration)
 npm install -g pyright
-npm install -g lua-language-server
+
+# TypeScript/JavaScript (install if you enable its LSP configuration)
+npm install -g typescript typescript-language-server
 ```
+
+The Rust toolchain supplies `rust-analyzer` and `rustfmt`; with rustup, install
+the actual components using:
+
+```bash
+rustup component add rust-analyzer rustfmt
+```
+
+The files in `~/.cargo/bin` may be rustup proxies, so the presence of a
+`rust-analyzer` file alone does not mean the component is installed. Verify it
+with `rust-analyzer --version`. Both rustup components and Cargo-installed
+programs normally live in `~/.cargo/bin`; that directory must be on the `PATH`
+of the shell which starts Neovim. The bundled Fish configuration adds it
+automatically. Lua files are formatted with Stylua, which can be installed
+using `cargo install stylua`. Optional tools, including `lua-language-server`,
+can also be installed interactively from Neovim with `:Mason`.
+
+### Configured formatters
+
+| Language | Formatter | Installation source |
+| --- | --- | --- |
+| Lua | `stylua` | `cargo install stylua` |
+| Rust | `rustfmt` | Fedora package or rustup component |
+| Go | `gofmt` | Fedora `golang` package |
+| Python | `ruff` | Fedora `python3-ruff` package |
+| C/C++ | `clang-format` | Fedora `clang-tools-extra` package |
 
 ## Installation
 
@@ -222,6 +267,24 @@ Check if language server is installed:
 ```vim
 :LspInfo
 ```
+
+For Rust, also verify that the rustup component behind its proxy is installed:
+
+```bash
+rustup component add rust-analyzer rustfmt
+rust-analyzer --version
+```
+
+Open Neovim from a Cargo project (a directory containing `Cargo.toml`) so
+`rust-analyzer` can determine the project root.
+
+### Formatter not working
+
+Run `:ConformInfo` to see which formatter Conform selected and whether its
+executable was found. This configuration expects `stylua` for Lua, `rustfmt`
+for Rust, `gofmt` for Go, `ruff` for Python, and `clang-format` for C/C++.
+If a Cargo-installed formatter is reported as unavailable, restart the terminal
+after installing it and confirm that `echo $PATH` includes `~/.cargo/bin`.
 
 ### Icons not displaying
 

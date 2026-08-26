@@ -1,4 +1,4 @@
-fish_add_path ~/.local/bin
+fish_add_path --global ~/.local/bin ~/.cargo/bin
 set -g fish_greeting
 
 # Keep the `push` abbreviation ergonomic while allowing an optional
@@ -43,4 +43,3 @@ if status is-interactive
     alias kubectl "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
     alias curl "curl -v"
 end
-
