@@ -96,6 +96,7 @@ press `Space`, then `f`, then `f`.
 | `<leader>ff` | Normal | Find files |
 | `<leader>fa` | Normal | Find all files, including hidden and ignored files |
 | `<leader>fw` | Normal | Search text across the project |
+| `<leader>fg` | Normal | Search text across the project with Telescope live grep |
 | `<leader>fz` | Normal | Search text in the current buffer |
 | `<leader>fb` | Normal | Switch open buffers |
 | `<leader>fo` | Normal | Find recently opened files |

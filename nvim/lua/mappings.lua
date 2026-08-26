@@ -10,6 +10,7 @@ map("i", "jk", "<ESC>")
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 
 map("n", "gr", "<cmd>Telescope lsp_references<CR>", { desc = "LSP references" })
+map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Find text in project" })
 map("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Find symbols in file" })
 map("n", "<leader>fS", "<cmd>Telescope lsp_workspace_symbols<CR>", { desc = "Find symbols in project" })
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
