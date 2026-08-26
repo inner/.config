@@ -51,6 +51,25 @@ return {
     end,
   },
 
+  {
+    "saecki/crates.nvim",
+    tag = "stable",
+    event = { "BufRead Cargo.toml", "BufNewFile Cargo.toml" },
+    opts = {
+      lsp = {
+        enabled = true,
+        actions = true,
+        completion = true,
+        hover = true,
+      },
+      completion = {
+        crates = {
+          enabled = true,
+        },
+      },
+    },
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
