@@ -81,8 +81,8 @@ cd ~/github/.config
 The script is verbose and safe to rerun. It:
 
 - installs Alacritty, Fish, Git/GitHub CLI, Neovim, tmux, development tools,
-  language servers, formatters, and clipboard/search dependencies with `dnf`,
-  npm, and Cargo;
+  language servers, formatters, and the command-line utilities used by the
+  configuration with `dnf`, npm, and Cargo;
 - installs the `rust-analyzer` and `rustfmt` components when Rust is managed by
   rustup (the proxy binaries alone are not sufficient);
 - configures Fish to include `~/.cargo/bin`, allowing terminal-launched Neovim

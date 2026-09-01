@@ -62,7 +62,10 @@ packages=(
   rustfmt
   ShellCheck
   tmux
+  tree
+  wget2
   wl-clipboard
+  xdg-utils
 )
 
 log "Installing Fedora packages"
