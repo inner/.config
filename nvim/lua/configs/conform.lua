@@ -6,6 +6,7 @@ local options = {
     python = { "ruff_format" },
     c = { "clang-format" },
     cpp = { "clang-format" },
+    json = { "jq" },
     -- css = { "prettier" },
     -- html = { "prettier" },
   },

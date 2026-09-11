@@ -10,7 +10,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile", "BufWritePre" },
     opts = require "configs.conform",
   },
 
