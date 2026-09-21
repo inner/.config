@@ -1,30 +1,40 @@
-function fish_prompt --description 'Write out the prompt'
+function fish_prompt --description 'Powerlevel10k classic-inspired prompt'
+    # Capture pipeline failures before styling commands overwrite status.
     set -l last_pipestatus $pipestatus
-    set -lx __fish_last_status $status # Export for __fish_print_pipestatus.
-    set -l normal (set_color normal)
-    set -q fish_color_status
-    or set -g fish_color_status red
+    set -l background 1c1c1c
 
-    # Color the prompt differently when we're root
-    set -l color_cwd $fish_color_cwd
-    set -l suffix '>'
-    if functions -q fish_is_root_user; and fish_is_root_user
-        if set -q fish_color_cwd_root
-            set color_cwd $fish_color_cwd_root
-        end
-        set suffix '#'
+    set_color --background $background white
+    printf '  '
+    set_color --background $background 6c6c6c
+    printf ' '
+    set_color --bold --background $background 00afff
+    printf '%s ' (prompt_pwd)
+    set_color normal
+
+    # Let Fish handle repository state instead of duplicating Git parsing.
+    set -lx __fish_git_prompt_showdirtystate 1
+    set -lx __fish_git_prompt_showuntrackedfiles 1
+    set -lx __fish_git_prompt_showupstream auto
+    set -l git_info (fish_git_prompt '%s')
+    if test -n "$git_info"
+        set_color --background $background 6c6c6c
+        printf ' '
+        set_color --background $background 87d75f
+        printf ' %s ' "$git_info"
     end
 
-    # Write pipestatus
-    set -l bold_flag --bold
-    set -q __fish_prompt_status_generation; or set -g __fish_prompt_status_generation $status_generation
-    if test $__fish_prompt_status_generation = $status_generation
-        set bold_flag
+    # Include failures earlier in a pipeline, even if its final command succeeds.
+    if string match -qr '[1-9]' -- $last_pipestatus
+        set_color --background $background ff5f5f
+        printf ' ✘ %s ' (string join '|' $last_pipestatus)
     end
-    set __fish_prompt_status_generation $status_generation
-    set -l status_color (set_color $fish_color_status)
-    set -l statusb_color (set_color $bold_flag $fish_color_status)
-    set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
-
-    echo -n -s (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
+    if fish_is_root_user
+        set_color --background $background ff5f5f
+        printf '# '
+    end
+    set_color normal
+    set_color $background
+    printf '▓▒░'
+    set_color normal
+    printf ' '
 end
