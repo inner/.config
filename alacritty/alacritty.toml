@@ -1,11 +1,11 @@
 [general]
 import = [
-    "~/.config/alacritty/themes/linux.toml"
+    "~/.config/alacritty/themes/gruvbox_material_hard_dark.toml"
 ]
 
 [font]
 # normal = { family = "Iosevka Term Extended" }
-normal = { family = "FiraCode Nerd Font Mono" }
+normal = { family = "FiraCode Nerd Font Mono", style = "Medium" }
 size = 12.0
 
 [font.offset]
