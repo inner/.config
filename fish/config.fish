@@ -37,7 +37,6 @@ if status is-interactive
     alias ls "ls -lahS --color=auto --group-directories-first"
     alias o "xdg-open"
     alias c "codex"
-    alias ai "ollama launch opencode --model qwen3-coder-opencode"
     alias g "cd ~/github"
     alias k "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
     alias kubectl "~/github/talos-k8s/kubectl --kubeconfig=$HOME/github/talos-k8s/kubeconfig"
