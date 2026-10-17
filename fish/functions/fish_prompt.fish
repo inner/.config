@@ -5,10 +5,11 @@ function fish_prompt --description 'Write out the prompt'
     set -q fish_color_status
     or set -g fish_color_status red
 
-    # Color the prompt differently when we're root
-    set -l color_cwd $fish_color_cwd
+    # Apply Gruvbox accents here so command output keeps the terminal's palette.
+    set -l color_cwd 83a598
     set -l suffix '>'
     if functions -q fish_is_root_user; and fish_is_root_user
+        set color_cwd fb4934
         if set -q fish_color_cwd_root
             set color_cwd $fish_color_cwd_root
         end
@@ -26,5 +27,8 @@ function fish_prompt --description 'Write out the prompt'
     set -l statusb_color (set_color $bold_flag $fish_color_status)
     set -l prompt_status (__fish_print_pipestatus "[" "]" "|" "$status_color" "$statusb_color" $last_pipestatus)
 
-    echo -n -s (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
+    # Reset after each segment and at the end so prompt colors stay out of input.
+    echo -n -s (set_color $color_cwd) (prompt_pwd) $normal \
+        (set_color fabd2f) (fish_vcs_prompt) $normal \
+        " "$prompt_status (set_color fe8019) $suffix $normal " "
 end
