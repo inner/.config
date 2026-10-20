@@ -1,5 +1,9 @@
 # Global instructions
 
+## Tech stack
+- Primary languages: Rust and .NET (C#).
+- Containers: I use Docker, not Podman. Always use `docker` / `docker compose` commands and Dockerfiles. Never use `podman`, `podman-compose`, or Podman-specific config, even if `docker` appears to be an alias or the environment hints at Podman.
+
 ## Token efficiency
 - Answer directly. Lead with the result, then add only what the user needs to act on it.
 - Keep responses short. No preamble, no restating the question, no closing summaries that repeat what was just said.
