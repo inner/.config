@@ -48,6 +48,7 @@
 - Put intermediate files and comparison artifacts in project-local `tmp/`, not `/tmp`. This keeps output discoverable and project-scoped and avoids permission prompts for `/tmp`.
 - When testing a CLI with ad-hoc input, write the input to a file in `tmp/` with the Write tool (not `cat`/`echo` heredocs with `>`) and pass it by path instead of piping. This avoids permission prompts in subagents.
 - `SESSION.md`: while working, if you find bugs, missing features, or other oddities in the implementation, structure or workflow, add a concise description to `SESSION.md` to defer them. Fix them only if they block progress. Do not record your accomplishments there.
+  - After a `/rust-guidelines-audit` run, show the report in chat as usual, and also append it unchanged to `SESSION.md` in the root of the audited project. Put it under a heading with the date and the audited path, e.g. `## Rust guidelines audit: 2026-10-27, crates/parser`. Never overwrite or remove earlier content. The auditor agent is read-only, so the main session does this append.
 
 ## Shell scripts
 - Run shell scripts through `shellcheck`.
