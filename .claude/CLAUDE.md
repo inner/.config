@@ -35,6 +35,11 @@
   3. Call `query-docs` with that ID and a descriptive query scoped to one concept. For several distinct concepts, make one call per concept, unless the question is about how they interact.
   4. Answer from the fetched docs.
 
+## OpenSpec changes
+- When creating OpenSpec changes, prefix each change name with a zero-padded order number that matches the order they will be implemented/applied, e.g. `01-add-user-model`, `02-add-auth-endpoints`, `03-add-login-ui`.
+- If numbered changes already exist in `openspec/changes/` (including `archive/`), continue from the highest number instead of restarting at `01`.
+- When a set of changes has dependencies, number them so each change comes after the changes it depends on.
+
 ## No file modifications without explicit request
 - Never create, edit, write, move, rename, or delete files unless the user explicitly asks for that change in the current message.
 - This applies in every mode (plan, ask, agent, or any other mode). Being in a mode that permits edits is not a request to edit.
